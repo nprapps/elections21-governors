@@ -1,0 +1,36 @@
+{
+  "s3": {
+    "stage": {
+      "bucket": "stage-apps.npr.org",
+      "path": "elections21-governors"
+    },
+    "live": {
+      "bucket": "apps.npr.org",
+      "path": "elections21-governors"
+    }
+  },
+  "styles": {
+    "src/css/seed.less": "build/style.css"
+  },
+  "scripts": {
+    "src/js/main.js": "build/app.js"
+  },
+  "scriptsOnce": {
+    "src/js/embed.js": "build/embed.js",
+    "src/js/customizer.js": "build/customizer.js",
+    "src/js/sidechain.js": "build/sidechain.js"
+  },
+  "title": "2020 Elections",
+  "description": "",
+  "url": "https://apps.npr.org/elections21-governors/",
+  "image": "assets/social.jpg",
+  "analytics": {
+    "topicIDs": [],
+    "primaryTopic": "",
+    "secondaryTopics": []
+  },
+  "sheets": ["1zGnUkAcX2bm8xJ5BGr8-a_2LsEO_BII6Xuulxmq95Fw"],
+  "docs": { "longform": "1NzIbd-pC0eAvfTLi4S4MOmto9PsOLz6U-2zsOlwSujY" },
+  "embedded": false,
+  "production": true
+}
