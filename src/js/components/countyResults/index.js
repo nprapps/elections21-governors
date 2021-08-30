@@ -8,7 +8,12 @@ export default class CountyResults extends Component {
   constructor(props) {
     super();
 
-    this.state = { activeView: props.view };
+    this.state = {
+      activeView: props.view,
+      data: [],
+      state: props.state,
+      raceid: props.raceid,
+    };
     this.onCountyData = this.onCountyData.bind(this);
     this.onData = this.onData.bind(this);
   }
@@ -25,10 +30,9 @@ export default class CountyResults extends Component {
   }
 
   onData(json) {
-    var results = json.results
-        .filter(r => r.id == this.props.raceid);
+    var results = json.results.filter(r => r.id == this.props.raceid);
 
-    this.setState({ order: results[0].candidates});
+    this.setState({ order: results[0].candidates });
   }
 
   async componentDidMount() {
@@ -44,6 +48,34 @@ export default class CountyResults extends Component {
       `./data/counties/${this.props.state}-${this.props.raceid}.json`,
       this.onCountyData
     );
+    gopher.unwatch(`./data/states/${this.props.state}.json`, this.onData);
+  }
+
+  shouldComponentUpdate(newProps, newState) {
+    if (
+      this.props.state != newProps.state ||
+      this.props.raceid != newProps.raceid
+    ) {
+      this.setState({
+        data: null,
+        order: null,
+        state: newProps.state,
+        raceid: newProps.raceid,
+      });
+      gopher.unwatch(
+        `./data/counties/${this.props.state}-${this.props.raceid}.json`,
+        this.onCountyData
+      );
+      gopher.unwatch(`./data/states/${this.props.state}.json`, this.onData);
+
+      this.props = newProps;
+      gopher.watch(
+        `./data/counties/${newProps.state}-${newProps.raceid}.json`,
+        this.onCountyData
+      );
+      gopher.watch(`./data/states/${newProps.state}.json`, this.onData);
+      
+    }
   }
 
   render() {
@@ -59,7 +91,7 @@ export default class CountyResults extends Component {
         <CountyDataViz
           data={this.state.data}
           order={this.state.order.slice(0, 2)}
-          state={this.props.state.toUpperCase()}
+          state={this.state.state.toUpperCase()}
         />
       );
     }
@@ -68,16 +100,18 @@ export default class CountyResults extends Component {
       <div class="results-elements">
         <h3>Results By County</h3>
         <CountyMap
-          state={this.props.state.toUpperCase()}
+          state={this.state.state.toUpperCase()}
           data={this.state.data}
           sortOrder={this.state.order}
           isSpecial={this.props.isSpecial}
+          key={`${this.props.state}-${this.props.raceid}`}
         />
         {dataViz}
         <ResultsTableCounty
-          state={this.props.state.toUpperCase()}
+          state={this.state.state.toUpperCase()}
           data={this.state.data}
           sortOrder={this.state.order}
+          key={`${this.props.state}-${this.props.raceid}`}
         />
       </div>
     );

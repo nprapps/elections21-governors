@@ -1,7 +1,7 @@
 // import { h, createProjector } from 'maquette';
 import { h, Component, Fragment } from "preact";
 import gopher from "../gopher.js";
-import KeyRaces from "../stateViewKeyRaces";
+// import KeyRaces from "../stateViewKeyRaces";
 import ResultsTableCandidates from "../resultsTableCandidates";
 import CountyResults from "../countyResults";
 import TestBanner from "../testBanner";
@@ -18,7 +18,7 @@ export default class StateResults extends Component {
     super();
 
     this.state = {
-      data: {},
+      data: {}
     };
     this.onData = this.onData.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -56,11 +56,8 @@ export default class StateResults extends Component {
 
     let stateName = stateLookup[this.props.state].name;
 
-    let office = props.subview || "key";
-    let viewTitle =
-      office == "key"
-        ? "Key Results"
-        : `${strings[`office-${office}`]} Results`;
+    let office = props.subview || "I";
+    let viewTitle = `${strings[`office-${office}`]} Results`;
 
     return (
       <div
@@ -122,9 +119,7 @@ export default class StateResults extends Component {
   renderResults(view, counties) {
     var numberSort = (a, b) => a.seatNumber * 1 - b.seatNumber * 1;
     var nameSort = (a, b) => (a.seat < b.seat ? -1 : 1);
-    if (view === "key") {
-      return <KeyRaces state={this.props.state} />;
-    } else if (view === "G") {
+    if (view === "G") {
       var results = this.state.data.results
         .filter(r => r.office == view)
         .sort(view === "I" ? nameSort : numberSort);
@@ -215,7 +210,7 @@ export default class StateResults extends Component {
     var { results } = this.state.data;
     if (!results) return false;
     var available = new Set(results.map(r => r.office));
-    var tabs = "PGSHI"
+    var tabs = "IG"
       .split("")
       .filter(o => available.has(o))
       .map(function (data) {
