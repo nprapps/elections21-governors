@@ -63,21 +63,21 @@ module.exports = function(grunt) {
       grunt.file.write(file.dest, output);
     });
 
-    // generate office share pages
-    var officeTemplate = grunt.file.read("src/_office_social.html");
-    for (var office of ["president", "governor", "house", "senate"]) {
-      var output = process(officeTemplate, { office });
-      grunt.file.write(`build/share/${office}.html`, output);
-    }
+    // // generate office share pages
+    // var officeTemplate = grunt.file.read("src/_office_social.html");
+    // for (var office of ["president", "governor", "house", "senate"]) {
+    //   var output = process(officeTemplate, { office });
+    //   grunt.file.write(`build/share/${office}.html`, output);
+    // }
 
-    // generate state share pages
-    var stateTemplate = grunt.file.read("src/_state_social.html");
-    for (var state in grunt.data.json.states) {
-      var meta = grunt.data.json.states[state];
-      if (meta.district) continue;
-      var output = process(stateTemplate, { state });
-      grunt.file.write(`build/share/${state}.html`, output);
-    }
+    // // generate state share pages
+    // var stateTemplate = grunt.file.read("src/_state_social.html");
+    // for (var state in grunt.data.json.states) {
+    //   var meta = grunt.data.json.states[state];
+    //   if (meta.district) continue;
+    //   var output = process(stateTemplate, { state });
+    //   grunt.file.write(`build/share/${state}.html`, output);
+    // }
   });
 
 }
