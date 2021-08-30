@@ -132,7 +132,7 @@ class Customizer extends Component {
           {postals.map(s => <option value={s}>{stateSheet[s].name}</option>)}
         </select>
         <select value={state.selectedOffice} onInput={this.selectStateOffice}>
-        <option value="">Select an office</option>
+        <option value="">Select a race</option>
           {offices.map(([data, label]) => (
             <option value={data}>{label}</option>
           ))}
@@ -161,7 +161,7 @@ class Customizer extends Component {
           {postals.map(s => <option value={s}>{stateSheet[s].name}</option>)}
         </select>
         <select value={state.selectedRace} onInput={this.selectRace}>
-          <option value="">Select an office</option>
+          <option value="">Select a race</option>
           {state.races.map(r => <option value={r.id}>
             {`${strings["office-" + r.office]} ${r.seat ? r.seat : ""}`}
           </option>)}
