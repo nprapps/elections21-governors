@@ -15,10 +15,10 @@ def main():
   print("processing data")
   processed_data = processData(data)
 
-  processed_data.to_csv('data/census_data.csv', index=False)
+  processed_data.to_csv('data/census_data_2020.csv', index=False)
 
 def getAllCounties():
-  states = censusdata.geographies(censusdata.censusgeo([('state', '*')]), 'acs5', 2018)
+  states = censusdata.geographies(censusdata.censusgeo([('state', '*')]), 'acs5', 2019)
 
   all_states = pd.DataFrame() 
 
