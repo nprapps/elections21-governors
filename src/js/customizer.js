@@ -203,7 +203,6 @@ class Customizer extends Component {
     };
 
     var route = modePartials[mode] || "board";
-    console.log(freeVariables, props, state)
 
     return (<>
       <div class="mode-select">
