@@ -27,9 +27,6 @@ var hideBox = function(e) {
   if (e) track("closed-about-box");
 }
 
-// hide about box on click
-$.one(".about-box .close").addEventListener("click", hideBox);
-
 // check the cookie and hide if found
 if (document.cookie.indexOf(COOKIE) > -1) hideBox();
 // hide if there's a URL param

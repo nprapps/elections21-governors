@@ -121,7 +121,7 @@ class Customizer extends Component {
 
   county(free, props, state) {
     var { url, offices, postals } = free;
-    var office = state.selectedOffice || 'I';
+    var office = 'I';
     var [race] = state.races.filter(r => r.office == office);
     var src = `${url}#/states/${state.selectedState}/counties/${race.id}`;
     return (<>

@@ -12,7 +12,7 @@ while True:
   files = os.listdir("temp")
   json = [f for f in files if ("json" in f)]
   folder = posixpath.join("temp/timed", now)
-  os.makedirs(folder, exist_ok=True)
+  os.makedirs(folder)
   for f in json:
     src = posixpath.join("temp", f)
     dest = posixpath.join(folder, f)

@@ -86,15 +86,15 @@ export default class CountyResults extends Component {
     // Don't show data viz for special elections as they may have two candidates
     // of the same party running against each other.
     var dataViz;
-    if (!this.props.isSpecial) {
-      dataViz = (
-        <CountyDataViz
-          data={this.state.data}
-          order={this.state.order.slice(0, 2)}
-          state={this.state.state.toUpperCase()}
-        />
-      );
-    }
+    // if (!this.props.isSpecial) {
+    //   dataViz = (
+    //     <CountyDataViz
+    //       data={this.state.data}
+    //       order={this.state.order.slice(0, 2)}
+    //       state={this.state.state.toUpperCase()}
+    //     />
+    //   );
+    // }
 
     return (
       <div class="results-elements">

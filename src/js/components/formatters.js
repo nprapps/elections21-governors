@@ -12,7 +12,7 @@ var apMonths = [
   "Sept.",
   "Oct.",
   "Nov.",
-  "Dec."
+  "Dec.",
 ];
 
 export function DateFormatter(props) {
@@ -21,7 +21,7 @@ export function DateFormatter(props) {
   if (props.value) {
     var date = new Date(props.value);
     var hours = date.getHours();
-    if (!isNaN(hours)) { 
+    if (!isNaN(hours)) {
       var suffix = hours < 12 ? "AM" : "PM";
       if (!hours) {
         hours = 12;
@@ -35,9 +35,7 @@ export function DateFormatter(props) {
       dateString = `${hours}:${minutes} ${suffix} on ${month} ${day}, ${year}`;
     }
   }
-  return <span class="formatted-date">
-    {dateString}
-  </span>
+  return <span class="formatted-date">{dateString}</span>;
 }
 
 /*
@@ -68,6 +66,10 @@ export function getPartyPrefix(party) {
     prefix = "R";
   } else if (party == "Other") {
     prefix = "O";
+  } else if (party == "Yes") {
+    prefix = "Y";
+  } else if (party == "No") {
+    prefix = "N";
   } else {
     prefix = "I";
   }

@@ -89,6 +89,10 @@
         background: @ind;
         float: left;
 
+        &.No {
+          background: @gop;
+        }
+
         &.Dem {
           background: @dem;
         }
@@ -138,6 +142,14 @@
         fill: @indDim;
         &.allin {
           fill: @ind;
+        }
+      }
+
+      &.leading.No {
+        fill: @gopDim;
+
+        &.allin {
+          fill: @gop;
         }
       }
 
