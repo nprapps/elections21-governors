@@ -54,7 +54,7 @@ export default class App extends Component {
   }
 
   loading() {
-    return <span>"Loading..."</span>;
+    return <span></span>;
   }
 
   render(props, state) {

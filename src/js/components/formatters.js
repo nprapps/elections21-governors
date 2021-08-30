@@ -80,6 +80,9 @@ export function getParty(party) {
   if (["Dem", "GOP", "Other", "No", "Yes"].includes(party)) {
     return party;
   }
+  // if (party == "NPP") {
+  //   return "No affiliation"
+  // }
   return "Ind";
 }
 
