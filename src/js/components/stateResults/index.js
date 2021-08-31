@@ -5,7 +5,7 @@ import gopher from "../gopher.js";
 import ResultsTableCandidates from "../resultsTableCandidates";
 import CountyResults from "../countyResults";
 import TestBanner from "../testBanner";
-import DateFormatter from "../util";
+import { DateFormatter } from "../util";
 
 import stateLookup from "states.sheet.json";
 import strings from "strings.sheet.json";
@@ -83,29 +83,24 @@ export default class StateResults extends Component {
           )}
           <div class="source">
             <div class="note">
-              Note: <em>% in</em> for presidential, U.S. Senate and governor
+              Note: <em>% in</em> for governor
               races represents expected vote, an Associated Press estimate of
               the share of total ballots cast in an election that have been
               counted.{" "}
               <a href="https://www.ap.org/en-us/topics/politics/elections/counting-the-vote">
                 Read more about how EEVP is calculated.
               </a>{" "}
-              <em>% in</em> for U.S. House, state ballot and county-level results represents percent of precincts reporting.
+              <em>% in</em> for state ballot and county-level results represents percent of precincts reporting.
             </div>
-            {stateName !== "Alaska" && props.subview && (
-              <div class="note">
-                {strings["trends_footnote"]}
-              </div>
-            )}
             Source: AP (as of <DateFormatter value={state.latest} />
-            ). Candidates receiving less than 5% support not shown individually.
+            ). Candidates receiving less than 3% support not shown individually.
             Demographic, income and education data from the Census Bureau.
             COVID-19 case data from{" "}
             <a href="https://github.com/CSSEGISandData/COVID-19">
               Center for Systems Science and Engineering at Johns Hopkins
               University
             </a>
-            . {strings["unemployment_footnote"]} {strings["margins_footnote"]}
+            . {strings["margins_footnote"]}
           </div>
         </div>
 
