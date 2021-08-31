@@ -167,7 +167,7 @@ class Customizer extends Component {
         <select value={state.selectedState} onInput={e => this.loadStateRaces(e.target.value)}>
           {postals.map(s => <option value={s}>{stateSheet[s].name}</option>)}
         </select>
-        <select value={state.selectedRace} onInput={this.selectRace}>
+        <select value={state.raceID} onInput={this.selectRace}>
           <option value="">Select a race</option>
           {state.races.map(r => <option value={r.id}>
             {`${strings["office-" + r.office]} ${r.seat ? r.seat : ""}`}
@@ -218,7 +218,7 @@ class Customizer extends Component {
         <input
           type="radio"
           name="mode"
-          onInput={() => this.setState({ mode: data, selectedOffice: '' })}
+          onInput={() => this.setState({ mode: data, selectedOffice: '', raceID: '' })}
           id={`mode-${data}`}
           checked={data == state.mode}
         />
