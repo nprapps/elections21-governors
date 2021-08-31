@@ -51,6 +51,7 @@ export var formatters = {
     return value => formats.reduce((v, fn) => fn(v), value);
   },
   percentDecimal: v => (v * 100).toFixed(1) + "%",
+  percentFull: v => (v).toFixed(1) + "%",
   voteMargin: function (result) {
     var prefix = getPartyPrefix(result.party);
 

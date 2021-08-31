@@ -6,13 +6,13 @@ const availableMetrics = {
     format: formatters.comma,
   },
   past_margin: {
-    name: "2016 Presidential Margin",
+    name: "2020 Presidential Margin",
     format: formatters.voteMargin,
   },
-  unemployment: {
-    name: "Unemployment",
-    format: formatters.percentDecimal,
-  },
+  // unemployment: {
+  //   name: "Unemployment",
+  //   format: formatters.percentFull,
+  // },
   percent_white: {
     name: "% White",
     format: formatters.percentDecimal,
