@@ -2,6 +2,7 @@ import { h, Fragment, render, Component } from "preact";
 import $ from "./lib/qsa";
 import stateSheet from "states.sheet.json";
 import strings from "strings.sheet.json";
+import options from "customizer_options.sheet.json";
 import Sidechain from "@nprapps/sidechain";
 
 class Customizer extends Component {
@@ -122,9 +123,12 @@ class Customizer extends Component {
 
   county(free, props, state) {
     var { url, offices, postals } = free;
-    var office = 'I';
-    var [race] = state.races.filter(r => r.office == office);
-    var src = `${url}#/states/${state.selectedState}/counties/${race.id}`;
+    var [opts] = options.filter(o => o.state == state.selectedState && o.tag == state.mode);
+    var displayOffices = opts ? offices.filter(o => opts.races.includes(o[0])) : offices;
+    var [race] = state.races.filter(r => r.office == state.selectedOffice);
+    var raceId = race ? race.id : '';
+    var src = `${url}#/states/${state.selectedState}/counties/${raceId}`;
+
     return (<>
       <div class="state-select">
 
@@ -133,16 +137,19 @@ class Customizer extends Component {
         </select>
         <select value={state.selectedOffice} onInput={this.selectStateOffice}>
         <option value="">Select a race</option>
-          {offices.map(([data, label]) => (
+          {displayOffices.map(([data, label]) => (
             <option value={data}>{label}</option>
           ))}
         </select>
       </div>
-      {this.embeds(src, `responsive-embed-election-${state.selectedState}-${state.selectedOffice || "X"}`)}
-      <h2>Preview</h2>
-      <side-chain 
-        key={state.selectedState} 
-        src={src} />
+      {race && <>
+        {this.embeds(src, `responsive-embed-election-${state.selectedState}-${race.id}`)}
+        <h2>Preview</h2>
+        <side-chain
+          key={raceId}
+          src={src}
+        />
+      </>}
     </>);
   }
 
