@@ -1,4 +1,5 @@
 import { h } from "preact";
+import strings from "strings.sheet.json";
 
 var apMonths = [
   "Jan.",
@@ -18,8 +19,8 @@ var apMonths = [
 export function DateFormatter(props) {
   var dateString = "...";
 
-  if (props.value) {
-    var date = new Date(props.value);
+  if (props) {
+    var date = props.value ? new Date(props.value) : new Date(props);
     var hours = date.getHours();
     if (!isNaN(hours)) {
       var suffix = hours < 12 ? "AM" : "PM";
@@ -51,7 +52,7 @@ export var formatters = {
     return value => formats.reduce((v, fn) => fn(v), value);
   },
   percentDecimal: v => (v * 100).toFixed(1) + "%",
-  percentFull: v => (v).toFixed(1) + "%",
+  percentFull: v => v.toFixed(1) + "%",
   voteMargin: function (result) {
     var prefix = getPartyPrefix(result.party);
 
@@ -98,4 +99,45 @@ export function reportingPercentage(pct) {
   } else {
     return Math.round(pct * 100);
   }
+}
+
+export function getFootnote(time, state, county) {
+  var stateNote = state ? (
+    <span>
+      <em>% in</em> for governor races represents expected vote, an Associated
+      Press estimate of the share of total ballots cast in an election that have
+      been counted.{" "}
+      <a href="https://www.ap.org/en-us/topics/politics/elections/counting-the-vote">
+        Read more about how EEVP is calculated.
+      </a>{" "}
+    </span>
+  ) : (
+    ""
+  );
+  var countyNote = county ? (
+    <span>
+      <em>% in</em> for state ballot and county-level results represents percent
+      of precincts reporting.
+    </span>
+  ) : "" ;
+  var countySource = county ? (
+    <span>
+      {" "} Demographic, income and education data from the Census Bureau. COVID-19
+      case data from{" "}
+      <a href="https://github.com/CSSEGISandData/COVID-19">
+        Center for Systems Science and Engineering at Johns Hopkins University
+      </a>
+      . {strings["margins_footnote"]}
+    </span>
+  ) : "";
+  return (
+    <div class="source">
+      <div class="note">
+        Note: {stateNote} {countyNote}
+      </div>
+      Source: AP (as of <DateFormatter value={time} />
+      ). Candidates receiving less than 3% support not shown individually. 
+      {countySource}
+    </div>
+  );
 }

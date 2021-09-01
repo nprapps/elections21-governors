@@ -3,6 +3,7 @@ import gopher from "../gopher.js";
 import CountyMap from "../countyMap";
 import ResultsTableCounty from "../resultsTableCounty";
 import { CountyDataViz } from "../countyDataViz";
+import { DateFormatter, getFootnote } from "../util";
 
 export default class CountyResults extends Component {
   constructor(props) {
@@ -79,7 +80,7 @@ export default class CountyResults extends Component {
   }
 
   render() {
-    if (!this.state.data || !this.state.order) {
+    if (!this.state.data.length || !this.state.order) {
       return "";
     }
 
@@ -97,8 +98,8 @@ export default class CountyResults extends Component {
     // }
 
     return (
-      <div class="results-elements">
-        <h3>Results By County</h3>
+      <div class="results-elements county">
+        <h3><span class="embed-text">{this.state.data[0].seat} <br/></span>Results By County</h3>
         <CountyMap
           state={this.state.state.toUpperCase()}
           data={this.state.data}
@@ -113,6 +114,7 @@ export default class CountyResults extends Component {
           sortOrder={this.state.order}
           key={`${this.props.state}-${this.props.raceid}`}
         />
+        <div class="embed-text">{getFootnote(this.state.data[0].updated, false, true)}</div>
       </div>
     );
   }

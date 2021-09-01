@@ -1,5 +1,5 @@
 export { getAvailableMetrics, getCountyVariable, getCountyCandidates } from "./county_util.js";
-export { formatters, DateFormatter, getPartyPrefix, getParty, reportingPercentage } from "./formatters.js"
+export { formatters, DateFormatter, getPartyPrefix, getParty, reportingPercentage, getFootnote } from "./formatters.js"
 export { sortByParty, sortByOrder, getBucket, groupCalled } from "./sorters.js"
 
 export function styleJSX(styles) {

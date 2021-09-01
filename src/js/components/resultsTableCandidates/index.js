@@ -1,6 +1,6 @@
 import { h, Component, Fragment } from "preact";
 import gopher from "../gopher.js";
-import { reportingPercentage, getParty } from "../util.js";
+import { reportingPercentage, getParty, getFootnote } from "../util.js";
 
 const activeMugshots = {
   Biden:
@@ -16,7 +16,7 @@ export default function ResultsTableCandidates(props) {
 
   var results = props.data;
   var notStatewide = results.office === "H" || results.office === "I";
-  var seatName = notStatewide ? results.seat : props.title;
+  var seatName = results.seat;
   // if (results.office === "I" && results.description)
   //   seatName += ` - ${results.description}`;
 
@@ -53,7 +53,7 @@ export default function ResultsTableCandidates(props) {
     <div class={"results-table statewide " + (ballot ? "ballot" : "") + (house ? "house" : "")}>
       {seatName && (
         <div class="results-header">
-          <caption> {seatName} <span class="state-label">- {results.stateName}</span> </caption>
+          <caption> <span class="state-label">{results.stateName}: </span> {seatName}  </caption>
         </div>
       )}
       <div class={"board " + (isUncontested ? "uncontested" : "")} role="table">
@@ -87,6 +87,7 @@ export default function ResultsTableCandidates(props) {
         <span class="right">{isUncontested ? "" : reporting}</span>
       </div>
       {uncontestedText}
+     <div class="embed-text">{getFootnote(props.data.updated, true, false)}</div>
     </div>
   );
 }

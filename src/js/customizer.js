@@ -85,19 +85,6 @@ class Customizer extends Component {
     </>);
   }
 
-  board(free, props, state) {
-    var { url } = free;
-    var src = url + `#/${state.mode}`;
-    return (<>
-      {this.embeds(src, `responsive-embed-election-${state.selectedState}-${state.mode}`)}
-      <h2>Preview</h2>
-      <side-chain
-        key={state.raceID}
-        src={src}
-      />
-    </>);
-  }
-
   statePage(free, props, state) {
     var { url, offices, postals } = free;
     var src = `${url}#/states/${state.selectedState}/${state.selectedOffice || ''}`;
@@ -170,7 +157,7 @@ class Customizer extends Component {
         <select value={state.raceID} onInput={this.selectRace}>
           <option value="">Select a race</option>
           {state.races.map(r => <option value={r.id}>
-            {`${strings["office-" + r.office]} ${r.seat ? r.seat : ""}`}
+            {`${strings["office-" + r.office]}`}
           </option>)}
         </select>
       </div>
@@ -188,9 +175,9 @@ class Customizer extends Component {
   render(props, state) {
     var postals = Object.keys(stateSheet).filter(s => !stateSheet[s].district);
     var modes = [
-      ["state", "State page"],
-      ["county", "County page"],
-      ["race", "Individual race"],
+      ["state", "All results for a state"],
+      ["county", "County-level results"],
+      ["race", "Overall results by race"],
     ];
 
     var offices = [
