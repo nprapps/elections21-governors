@@ -14,7 +14,7 @@ var nprDate = apDate => {
 };
 
 // candidates to always keep in results
-var NEVER_MERGE = new Set(["8639", "1036"]);
+var NEVER_MERGE = new Set(["66651", "69750", "69751", "69755", "69756", "69746"]);
 
 var translation = {
   race: {
@@ -77,8 +77,15 @@ Object.keys(translation).forEach(type => {
 var majorParties = new Set(["GOP", "Dem"]);
 var sortCandidates = function (votes, candidates) {
   var compare = function (a, b) {
-    // if no votes yet
+    // if any candidate is in the never merge list
     if (votes == 0) {
+      if (NEVER_MERGE.has(a.id) && NEVER_MERGE.has(b.id)) {
+        return a.last < b.last ? -1 : 1;
+      } else if (NEVER_MERGE.has(a.id)) {
+        return -1;
+      } else if (NEVER_MERGE.has(b.id)) {
+        return 1;
+      }
       // put major parties first
       if (
         (majorParties.has(a.party) && majorParties.has(b.party)) ||
