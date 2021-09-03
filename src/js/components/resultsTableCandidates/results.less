@@ -190,9 +190,16 @@
             background: @ind;
           }
 
-          &.GOP,
-          &.No {
+          &.GOP {
             background: @gopDim;
+          }
+
+          &.No {
+            background: @noDim;
+          }
+
+          &.Yes {
+            background: @yesDim;
           }
 
           &.Dem {
@@ -204,10 +211,21 @@
           }
         }
 
-        &.GOP,
-        &.No {
+        &.GOP {
           .bar {
             background: @gop;
+          }
+        }
+
+        &.No {
+          .bar {
+            background: @no;
+          }
+        }
+
+        &.Yes {
+          .bar {
+            background: @yes;
           }
         }
 

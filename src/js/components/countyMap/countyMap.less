@@ -89,8 +89,12 @@
         background: @ind;
         float: left;
 
+        &.Yes {
+          background: @yes;
+        }
+
         &.No {
-          background: @gop;
+          background: @no;
         }
 
         &.Dem {
@@ -145,11 +149,19 @@
         }
       }
 
-      &.leading.No {
-        fill: @gopDim;
+      &.leading.Yes {
+        fill: @yesDim;
 
         &.allin {
-          fill: @gop;
+          fill: @yes;
+        }
+      }
+
+      &.leading.No {
+        fill: @noDim;
+
+        &.allin {
+          fill: @no;
         }
       }
 
@@ -258,8 +270,12 @@
     background: @gop;
     opacity: 1;
 
+    &.No {
+      background: @no;
+    }
+
     &.Yes {
-      background: @ind;
+      background: @yes;
     }
   }
 }
