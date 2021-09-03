@@ -20,7 +20,7 @@
     "src/js/customizer.js": "build/customizer.js",
     "src/js/sidechain.js": "build/sidechain.js"
   },
-  "title": "2020 Elections",
+  "title": "2021 Elections",
   "description": "",
   "url": "https://apps.npr.org/elections21-governors/",
   "image": "assets/social.jpg",
@@ -32,5 +32,5 @@
   "sheets": ["1zGnUkAcX2bm8xJ5BGr8-a_2LsEO_BII6Xuulxmq95Fw"],
   "docs": { "longform": "1mQYozAlIJqEEHmhkO59AzuII5Av0_x5eA5si56LbBF4" },
   "embedded": false,
-  "production": false
+  "production": true
 }
