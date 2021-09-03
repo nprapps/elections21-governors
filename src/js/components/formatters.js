@@ -119,24 +119,35 @@ export function getFootnote(time, state, county) {
       <em>% in</em> for state ballot and county-level results represents percent
       of precincts reporting.
     </span>
-  ) : "" ;
+  ) : (
+    ""
+  );
   var countySource = county ? (
     <span>
-      {" "} Demographic, income and education data from the Census Bureau. COVID-19
+      {" "}
+      Demographic, income and education data from the Census Bureau. COVID-19
       case data from{" "}
       <a href="https://github.com/CSSEGISandData/COVID-19">
         Center for Systems Science and Engineering at Johns Hopkins University
       </a>
       . {strings["margins_footnote"]}
     </span>
-  ) : "";
+  ) : (
+    ""
+  );
   return (
     <div class="source">
       <div class="note">
-        Note: {stateNote} {countyNote}
+        Note:{" "}
+        <a
+          href="https://www.npr.org/2020/10/29/928863973/heres-how-npr-reports-election-results"
+          target="_blank">
+          Read more about how AP calls races.
+        </a>{" "}
+        {stateNote} {countyNote}
       </div>
       Source: AP (as of <DateFormatter value={time} />
-      ). Candidates receiving less than 3% support not shown individually. 
+      ). Candidates receiving less than 3% support not shown individually.
       {countySource}
     </div>
   );
