@@ -26,8 +26,14 @@ export default class CountyResults extends Component {
       bubbles: true,
     });
     this.base.dispatchEvent(event);
+    this.updateTimestamp(updated);
     var office = json.results[0].office;
     this.setState({ data: json.results, office });
+  }
+
+  updateTimestamp(timestamp) {
+    var latest = Math.max(this.state.latest || 0, timestamp);
+    this.setState({ latest });
   }
 
   onData(json) {
@@ -79,7 +85,7 @@ export default class CountyResults extends Component {
     }
   }
 
-  render() {
+  render(props, state) {
     if (!this.state.data.length || !this.state.order) {
       return "";
     }
@@ -114,7 +120,7 @@ export default class CountyResults extends Component {
           sortOrder={this.state.order}
           key={`${this.props.state}-${this.props.raceid}`}
         />
-        <div class="embed-text">{getFootnote(this.state.data[0].updated, false, true)}</div>
+        <div class="embed-text">{getFootnote(state.latest, false, true)}</div>
       </div>
     );
   }
