@@ -103,22 +103,20 @@ export function reportingPercentage(pct) {
 }
 
 export function getFootnote(time, state, county) {
-  var stateNote = state ? (
+  var stateNote = (
     <span>
-      <em>% in</em> for governor races represents expected vote, an Associated
+      <em>% in</em> for statewide races represents expected vote, an Associated
       Press estimate of the share of total ballots cast in an election that have
       been counted.{" "}
       <a href="https://www.ap.org/en-us/topics/politics/elections/counting-the-vote">
         Read more about how EEVP is calculated.
       </a>{" "}
     </span>
-  ) : (
-    ""
   );
   var countyNote = county ? (
     <span>
-      <em>% in</em> for state ballot and county-level results represents percent
-      of precincts reporting.
+      <em>% in</em> for county-level results represents percent of precincts
+      reporting.
     </span>
   ) : (
     ""
@@ -130,8 +128,8 @@ export function getFootnote(time, state, county) {
       case data from{" "}
       <a href="https://github.com/CSSEGISandData/COVID-19">
         Center for Systems Science and Engineering at Johns Hopkins University
-      </a>
-      {" "}as of Sep. 6th. {strings["margins_footnote"]}
+      </a>{" "}
+      as of Sep. 6th. {strings["margins_footnote"]}
     </span>
   ) : (
     ""
@@ -148,7 +146,7 @@ export function getFootnote(time, state, county) {
         {stateNote} {countyNote}
       </div>
       Source: AP (as of <DateFormatter value={time} />
-      ). Candidates receiving less than 3% support not shown individually.
+      ).
       {countySource}
     </div>
   );
