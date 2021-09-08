@@ -28,7 +28,7 @@ export default class ResultsTableCounty extends Component {
   scrollToRef(ref) {
     if (ref.current) {
       ref.current.focus();
-      ref.current.scrollIntoView();
+      // ref.current.scrollIntoView();
     }
   }
 

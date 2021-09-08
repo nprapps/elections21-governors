@@ -17,25 +17,25 @@ const availableMetrics = {
     name: "% White",
     format: formatters.percentDecimal,
   },
-  percent_black: {
-    name: "% Black",
-    format: formatters.percentDecimal,
-  },
-  percent_hispanic: {
-    name: "% Hispanic",
-    format: formatters.percentDecimal,
-  },
+  // percent_black: {
+  //   name: "% Black",
+  //   format: formatters.percentDecimal,
+  // },
+  // percent_hispanic: {
+  //   name: "% Hispanic",
+  //   format: formatters.percentDecimal,
+  // },
   median_income: {
     name: "Median Income",
     format: formatters.chain([formatters.comma, formatters.dollars]),
   },
-  percent_bachelors: {
-    name: "% College-Educated",
-    format: formatters.percent,
-  },
+  // percent_bachelors: {
+  //   name: "% College-Educated",
+  //   format: formatters.percent,
+  // },
   covid: {
     name: "COVID-19 Cases Per 1,000",
-    format: formatters.comma,
+    format: formatters.decimal,
   },
   countyName: {
     name: "County",
