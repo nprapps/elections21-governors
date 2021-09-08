@@ -47,6 +47,7 @@ export var formatters = {
   titleCase: v => v.replace(/(\b\w)/g, s => s.toUpperCase()),
   percent: v => Math.round(v * 100) + "%",
   comma: v => (v * 1).toLocaleString(),
+  decimal: v => (v * 1).toFixed(1),
   dollars: v => "$" + v,
   chain: function (formats) {
     return value => formats.reduce((v, fn) => fn(v), value);
@@ -125,12 +126,12 @@ export function getFootnote(time, state, county) {
   var countySource = county ? (
     <span>
       {" "}
-      Demographic, income and education data from the Census Bureau. COVID-19
+      Demographic, income and population data from the Census Bureau. COVID-19
       case data from{" "}
       <a href="https://github.com/CSSEGISandData/COVID-19">
         Center for Systems Science and Engineering at Johns Hopkins University
       </a>
-      . {strings["margins_footnote"]}
+      {" "}as of Sep. 6th. {strings["margins_footnote"]}
     </span>
   ) : (
     ""
