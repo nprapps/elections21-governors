@@ -173,6 +173,7 @@ export default class CountyMap extends Component {
         path.style.fill = "#e1e1e1";
         incomplete = true;
       } else {
+        path.style.fill = '';
         var [candidate] = this.legendCands.filter(c => isSameCandidate(c, top));
         if (candidate.special) path.classList.add(`i${candidate.special}`);
         path.classList.add(getParty(top.party));
