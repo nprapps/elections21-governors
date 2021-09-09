@@ -15,7 +15,6 @@ export default function ResultsTableCandidates(props) {
   }
 
   var results = props.data;
-  var notStatewide = results.office === "H" || results.office === "I";
   var seatName = results.seat;
 
   let totalVotes = 0;
@@ -24,9 +23,7 @@ export default function ResultsTableCandidates(props) {
   }
 
   var isUncontested = results.candidates.length < 2;
-  var reporting = `${reportingPercentage(
-    (notStatewide ? props.data.reportingPercent : props.data.eevp) || 0
-  )}% in`;
+  var reporting = `${reportingPercentage(props.data.eevp || 0)}% in`;
 
   var hasMugs = results.candidates.some(c =>
     Object.keys(activeMugshots).includes(c.last)
@@ -48,10 +45,18 @@ export default function ResultsTableCandidates(props) {
   var house = results.office == "H";
 
   return (
-    <div class={"results-table statewide " + (ballot ? "ballot" : "") + (house ? "house" : "")}>
+    <div
+      class={
+        "results-table statewide " +
+        (ballot ? "ballot" : "") +
+        (house ? "house" : "")
+      }>
       {seatName && (
         <div class="results-header">
-          <caption> <span class="state-label">{results.stateName}: </span> {seatName}  </caption>
+          <caption>
+            {" "}
+            <span class="state-label">{results.stateName}: </span> {seatName}{" "}
+          </caption>
         </div>
       )}
       <div class={"board " + (isUncontested ? "uncontested" : "")} role="table">
@@ -85,7 +90,9 @@ export default function ResultsTableCandidates(props) {
         <span class="right">{isUncontested ? "" : reporting}</span>
       </div>
       {uncontestedText}
-     <div class="embed-text">{getFootnote(props.data.updated, true, false)}</div>
+      <div class="embed-text">
+        {getFootnote(props.data.updated, true, false)}
+      </div>
     </div>
   );
 }
@@ -191,7 +198,7 @@ function CandidateVoteCell(candidate, uncontested) {
     );
   }
   var candPercent = candidate.percent
-    ? `${Math.round(candidate.percent*1000)/10}%`
+    ? `${Math.round(candidate.percent * 1000) / 10}%`
     : "-";
   return (
     <div role="cell" class="td percentage">
