@@ -124,12 +124,12 @@ export function getFootnote(time, state, county) {
   var countySource = county ? (
     <span>
       {" "}
-      Demographic, income and population data from the Census Bureau. COVID-19
+      Demographic, income and population data from the Census Bureau. {strings["margins_footnote"]}{" "} COVID-19
       case data from{" "}
       <a href="https://github.com/CSSEGISandData/COVID-19">
         Center for Systems Science and Engineering at Johns Hopkins University
       </a>{" "}
-      as of Sep. 6th. {strings["margins_footnote"]}
+      as of Sep. 6th.
     </span>
   ) : (
     ""
@@ -137,7 +137,7 @@ export function getFootnote(time, state, county) {
   return (
     <div class="source">
       <div class="note">
-        Note:{" "}
+        Note: AP will only declare a winner in the race to replace California Gov. Gavin Newsom if the vote to recall Newsom is successful.{" "}
         <a
           href="https://www.npr.org/2020/10/29/928863973/heres-how-npr-reports-election-results"
           target="_blank">
