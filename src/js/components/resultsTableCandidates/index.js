@@ -17,8 +17,6 @@ export default function ResultsTableCandidates(props) {
   var results = props.data;
   var notStatewide = results.office === "H" || results.office === "I";
   var seatName = results.seat;
-  // if (results.office === "I" && results.description)
-  //   seatName += ` - ${results.description}`;
 
   let totalVotes = 0;
   for (let i = 0; i < results.candidates.length; i++) {

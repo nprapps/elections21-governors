@@ -24,6 +24,7 @@ export default class App extends Component {
     }
     this.addView("/states/:state", StateResults);
     this.addView("/states/:state/:subview", StateResults);
+    this.addView("/states/:state/overall/:subview/:raceid", StateResults);
     this.addView("/states/:state/counties/:raceid", CountyResults);
 
   }

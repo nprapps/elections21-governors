@@ -65,7 +65,7 @@ export default class StateResults extends Component {
         onupdatedtime={e => this.updateTimestamp(e.detail, e)}>
         <div class="content">
           {test ? <TestBanner /> : ""}
-          <header id="state-header">
+          {!props.raceid ? <header id="state-header">
             <img
               class="icon"
               src={"./assets/states/" + this.props.state + ".svg"}></img>
@@ -76,12 +76,12 @@ export default class StateResults extends Component {
               </h1>
               {this.renderTabSwitcher(office)}
             </div>
-          </header>
+          </header>  : ''}
           <div class="chatter" dangerouslySetInnerHTML={{ __html: chatter }} />
           {results && (
-            <div class="results-elements">{this.renderResults(office)}</div>
+            <div class="results-elements">{this.renderResults(office, !props.raceid)}</div>
           )}
-          {getFootnote(state.latest, true, true)}
+          {getFootnote(state.latest, true, !props.raceid)}
         </div>
 
         <aside class="sidebar">
@@ -94,7 +94,7 @@ export default class StateResults extends Component {
   renderResults(view, counties) {
     var numberSort = (a, b) => a.seatNumber * 1 - b.seatNumber * 1;
     var nameSort = (a, b) => (a.seat < b.seat ? -1 : 1);
-    if (view === "G") {
+    if (view === "G" || !counties) {
       var results = this.state.data.results
         .filter(r => r.office == view)
         .sort(view === "I" ? nameSort : numberSort);
