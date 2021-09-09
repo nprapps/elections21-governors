@@ -141,31 +141,31 @@ class Customizer extends Component {
   }
 
   race(free, props, state) {
-    var { url, postals } = free;
-    var src = "";
-    if (state.raceID) {
-      var assembly = new URL(url + "./embed.html");
-      assembly.searchParams.set("file", `states/${state.selectedState}`);
-      assembly.searchParams.set("race", state.raceID);
-      src = assembly.toString();
-    }
+    var { url, offices, postals } = free;
+    var [opts] = options.filter(o => o.state == state.selectedState && o.tag == state.mode);
+    var displayOffices = opts ? offices.filter(o => opts.races.includes(o[0])) : offices;
+    var [race] = state.races.filter(r => r.office == state.selectedOffice);
+    var raceId = race ? race.id : '';
+    var src = `${url}#/states/${state.selectedState}/overall/${state.selectedOffice}/${raceId}`;
+
     return (<>
       <div class="state-select">
-        <select value={state.selectedState} onInput={e => this.loadStateRaces(e.target.value)}>
+
+        <select value={state.selectedState} onInput={this.selectStatePage}>
           {postals.map(s => <option value={s}>{stateSheet[s].name}</option>)}
         </select>
-        <select value={state.raceID} onInput={this.selectRace}>
-          <option value="">Select a race</option>
-          {state.races.map(r => <option value={r.id}>
-            {`${strings["office-" + r.office]}`}
-          </option>)}
+        <select value={state.selectedOffice} onInput={this.selectStateOffice}>
+        <option value="">Select a race</option>
+          {displayOffices.map(([data, label]) => (
+            <option value={data}>{label}</option>
+          ))}
         </select>
       </div>
-      {state.raceID && <>
-        {this.embeds(src, `responsive-embed-election-${state.selectedState}-${state.raceID}`)}
+      {race && <>
+        {this.embeds(src, `responsive-embed-election-${state.selectedState}-${race.id}`)}
         <h2>Preview</h2>
         <side-chain
-          key={state.raceID}
+          key={raceId}
           src={src}
         />
       </>}
