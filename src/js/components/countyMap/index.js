@@ -160,10 +160,11 @@ export default class CountyMap extends Component {
       var fips = mapData[d].fips;
       var candidates = mapData[d].candidates;
       var [top] = candidates.sort((a, b) => b.percent - a.percent);
-      if (!top.votes) continue;
+      // if (!top.votes) continue;
 
       var path = this.svg.querySelector(`[id="fips-${fips}"]`);
       if (!path) continue;
+      path.classList.remove(...path.classList);
       path.classList.add("painted");
 
       var hitThreshold = mapData[d].reportingPercent > 0.5;
