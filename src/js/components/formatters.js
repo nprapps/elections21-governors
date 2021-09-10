@@ -108,7 +108,7 @@ export function getFootnote(time, state, county) {
       <em>% in</em> for state-level races represents expected vote, an Associated
       Press estimate of the share of total ballots cast in an election that have
       been counted.{" "}
-      <a href="https://www.ap.org/en-us/topics/politics/elections/counting-the-vote">
+      <a href="https://www.ap.org/topics/politics/counting-the-vote">
         Read more about how EEVP is calculated.
       </a>{" "}
     </span>
