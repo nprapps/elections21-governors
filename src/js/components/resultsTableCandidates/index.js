@@ -23,7 +23,7 @@ export default function ResultsTableCandidates(props) {
   }
 
   var isUncontested = results.candidates.length < 2;
-  var reporting = `${reportingPercentage(props.data.eevp || 0)}% in`;
+  var reporting = `${reportingPercentage(props.data.eevp || props.data.reportingPercent || 0)}% in`;
 
   var hasMugs = results.candidates.some(c =>
     Object.keys(activeMugshots).includes(c.last)
