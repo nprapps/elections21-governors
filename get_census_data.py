@@ -26,13 +26,13 @@ def getAllCounties():
   for state in states:
     print("getting: ", state)
     state_fips = states[state].geo[0][1]
-    counties = censusdata.geographies(censusdata.censusgeo([('state', state_fips), ('county', '*')]), 'acs5', 2018)
+    counties = censusdata.geographies(censusdata.censusgeo([('state', state_fips), ('county', '*')]), 'acs5', 2019)
 
-    subject_data = censusdata.download('acs5', 2018,
+    subject_data = censusdata.download('acs5', 2019,
              censusdata.censusgeo([('state', state_fips),
                                    ('county', '*')]),
             list(subject_tables.keys()), tabletype='subject').reset_index()
-    detail_data = censusdata.download('acs5', 2018,
+    detail_data = censusdata.download('acs5', 2019,
              censusdata.censusgeo([('state', state_fips),
                                    ('county', '*')]),
             list(detail_tables.keys())).reset_index()
