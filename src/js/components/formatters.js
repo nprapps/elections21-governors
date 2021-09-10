@@ -105,28 +105,15 @@ export function reportingPercentage(pct) {
 export function getFootnote(time, state, county) {
   var stateNote = (
     <span>
-      <em>% in</em> for state-level races represents expected vote, an Associated
-      Press estimate of the share of total ballots cast in an election that have
-      been counted.{" "}
-      <a href="https://www.ap.org/topics/politics/counting-the-vote">
-        Read more about how EEVP is calculated.
-      </a>{" "}
+      <em>% in</em> is an <a href="https://www.ap.org/topics/politics/counting-the-vote" target="_blank">AP estimate</a> of how much of the vote has been counted.{" "}
     </span>
-  );
-  var countyNote = county ? (
-    <span>
-      <em>% in</em> for county-level results represents percent of precincts
-      reporting.
-    </span>
-  ) : (
-    ""
   );
   var countySource = county ? (
     <span>
       {" "}
       Demographic, income and population data from the Census Bureau. {strings["margins_footnote"]}{" "} COVID-19
       case data from{" "}
-      <a href="https://github.com/CSSEGISandData/COVID-19">
+      <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">
         Center for Systems Science and Engineering at Johns Hopkins University
       </a>{" "}
       as of Sep. 6th.
@@ -143,7 +130,7 @@ export function getFootnote(time, state, county) {
           target="_blank">
           Read more about how AP calls races.
         </a>{" "}
-        {stateNote} {countyNote}
+        {stateNote}
       </div>
       Source: AP (as of <DateFormatter value={time} />
       ).
