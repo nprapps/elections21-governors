@@ -23,7 +23,7 @@ export function DateFormatter(props) {
     var date = props.value ? new Date(props.value) : new Date(props);
     var hours = date.getHours();
     if (!isNaN(hours)) {
-      var suffix = hours < 12 ? "AM" : "PM";
+      var suffix = hours < 12 ? "a.m." : "p.m.";
       if (!hours) {
         hours = 12;
       } else if (hours > 12) {
@@ -105,18 +105,18 @@ export function reportingPercentage(pct) {
 export function getFootnote(time, state, county) {
   var stateNote = (
     <span>
-      <em>% in</em> is an <a href="https://www.ap.org/topics/politics/counting-the-vote" target="_blank">AP estimate</a> of how much of the vote has been counted.{" "}
+      "% in" is an <a href="https://www.ap.org/topics/politics/counting-the-vote" target="_blank">AP estimate</a> of how much of the vote has been counted.{" "}
     </span>
   );
   var countySource = county ? (
     <span>
       {" "}
-      Demographic, income and population data from the Census Bureau. {strings["margins_footnote"]}{" "} COVID-19
-      case data from{" "}
+      Demographic, income and population data from the Census Bureau. "% White" is the percentage of the population that identifies as "white alone" and not Hispanic or Latino.  {strings["margins_footnote"]}{" "} COVID-19
+      case data from the{" "}
       <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">
         Center for Systems Science and Engineering at Johns Hopkins University
       </a>{" "}
-      as of Sep. 6th.
+      as of Sept. 6th, 2021.
     </span>
   ) : (
     ""
@@ -124,11 +124,11 @@ export function getFootnote(time, state, county) {
   return (
     <div class="source">
       <div class="note">
-        Note: AP will only declare a winner in the race to replace California Gov. Gavin Newsom if the vote to recall Newsom is successful.{" "}
+        Note: The AP will declare a winner in the race to replace California Gov. Gavin Newsom only if the vote to recall Newsom is successful.{" "}
         <a
           href="https://www.npr.org/2020/10/29/928863973/heres-how-npr-reports-election-results"
           target="_blank">
-          Read more about how AP calls races.
+          Read more about how the AP calls races.
         </a>{" "}
         {stateNote}
       </div>
