@@ -50,10 +50,12 @@ module.exports = function(grunt) {
 
   var middleware = function(connect, options, ware) {
     ware.unshift(caseSensitive);
-    ware.unshift(redirectMissingData);
+    if (!grunt.option("offline")) {
+      ware.unshift(redirectMissingData);
+    }
     return ware;
   };
-  
+
   grunt.config.merge({
     connect: {
       dev: {
