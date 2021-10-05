@@ -31,13 +31,13 @@ module.exports = function(grunt) {
           level: "FIPScode"
         }
       },
-      // {
-      //   date: "2021-09-14",
-      //   params: {
-      //     officeID: "I,G",
-      //     level: "state"
-      //   }
-      // }
+      {
+        date: "2021-11-02",
+        params: {
+          officeID: "G",
+          level: "FIPScode"
+        }
+      }
     ];
 
     // get results from AP

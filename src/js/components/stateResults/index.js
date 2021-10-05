@@ -74,7 +74,7 @@ export default class StateResults extends Component {
                 <div class="state-name">Election results</div>
                 {stateName}
               </h1>
-              {this.renderTabSwitcher(office)}
+              { (this.props.state == "CA") ? this.renderTabSwitcher(office) : ""}
             </div>
           </header>  : ''}
           <div class="chatter" dangerouslySetInnerHTML={{ __html: chatter }} />
@@ -94,7 +94,7 @@ export default class StateResults extends Component {
   renderResults(view, counties) {
     var numberSort = (a, b) => a.seatNumber * 1 - b.seatNumber * 1;
     var nameSort = (a, b) => (a.seat < b.seat ? -1 : 1);
-    if (view === "G" || !counties) {
+    if ((view === "G" && this.props.state == "CA") || !counties) {
       var results = this.state.data.results
         .filter(r => r.office == view)
         .sort(view === "I" ? nameSort : numberSort);
@@ -183,6 +183,7 @@ export default class StateResults extends Component {
   renderTabSwitcher(view) {
     // Create the tab switcher, between different race types
     var { results } = this.state.data;
+    var props = this.props;
     if (!results) return false;
     var available = new Set(results.map(r => r.office));
     var tabs = "IG"
@@ -191,7 +192,7 @@ export default class StateResults extends Component {
       .map(function (data) {
         return {
           data,
-          label: strings[`office-${data}`],
+          label: strings[`office-${props.state}-${data}`],
         };
       });
 
