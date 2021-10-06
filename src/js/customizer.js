@@ -87,6 +87,8 @@ class Customizer extends Component {
 
   statePage(free, props, state) {
     var { url, offices, postals } = free;
+    var [opts] = options.filter(o => o.state == state.selectedState && o.tag == state.mode);
+    var displayOffices = opts ? offices.filter(o => opts.races.includes(o[0])) : offices;
     var src = `${url}#/states/${state.selectedState}/${state.selectedOffice || ''}`;
     return (<>
       <div class="state-select">
@@ -95,7 +97,7 @@ class Customizer extends Component {
         </select>
         <select value={state.selectedOffice} onInput={this.selectStateOffice}>
           <option value="">Select a race</option>
-          {offices.map(([data, label]) => (
+          {displayOffices.map(([data, label]) => (
             <option value={data}>{label}</option>
           ))}
         </select>

@@ -56,7 +56,7 @@ export default class StateResults extends Component {
 
     let stateName = stateLookup[this.props.state].name;
 
-    let office = props.subview || "I";
+    let office = props.state == "CA" ? (props.subview || "I") : (props.subview || "G");
     let viewTitle = `${strings[`office-${office}`]} Results`;
 
     return (
