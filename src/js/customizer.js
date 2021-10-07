@@ -8,9 +8,17 @@ import Sidechain from "@nprapps/sidechain";
 class Customizer extends Component {
   constructor() {
     super();
+
+    var search = window.location.search.replace(/^\?/, "");
+    var query = {};
+    search.split("&").forEach(pair => {
+      var [key, value] = pair.split("=");
+      query[key] = value;
+    });
+
     this.state = {
       mode: "state",
-      selectedState: "CA",
+      selectedState: query['state'] || "NJ",
       selectedOffice: "",
       races: [],
       raceID: null,
