@@ -81,7 +81,7 @@ export default class StateResults extends Component {
           {results && (
             <div class="results-elements">{this.renderResults(office, !props.raceid)}</div>
           )}
-          {getFootnote(state.latest, true, !props.raceid)}
+          {getFootnote(state.latest, props.state, !props.raceid)}
         </div>
 
         <aside class="sidebar">

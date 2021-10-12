@@ -29,6 +29,7 @@ export default function ResultsTableCandidates(props) {
     Object.keys(activeMugshots).includes(c.last)
   );
 
+  console.log(props)
   var footnote;
   var uncontestedText = isUncontested ? (
     <div class="footnote uncontested">
@@ -91,7 +92,7 @@ export default function ResultsTableCandidates(props) {
       </div>
       {uncontestedText}
       <div class="embed-text">
-        {getFootnote(props.data.updated, true, false)}
+        {getFootnote(props.data.updated, props.data.state, false)}
       </div>
     </div>
   );

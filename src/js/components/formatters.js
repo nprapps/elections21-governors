@@ -103,6 +103,7 @@ export function reportingPercentage(pct) {
 }
 
 export function getFootnote(time, state, county) {
+  var newsomNote = state == 'CA' ? <span>Note: The AP will declare a winner in the race to replace California Gov. Gavin Newsom only if the vote to recall Newsom is successful.{" "}</span> : '';
   var stateNote = (
     <span>
       "% in" is an <a href="https://www.ap.org/topics/politics/counting-the-vote" target="_blank">AP estimate</a> of how much of the vote has been counted.{" "}
@@ -124,7 +125,7 @@ export function getFootnote(time, state, county) {
   return (
     <div class="source">
       <div class="note">
-        Note: The AP will declare a winner in the race to replace California Gov. Gavin Newsom only if the vote to recall Newsom is successful.{" "}
+        {newsomNote}
         <a
           href="https://www.npr.org/2020/10/29/928863973/heres-how-npr-reports-election-results"
           target="_blank">

@@ -120,7 +120,7 @@ export default class CountyResults extends Component {
           sortOrder={this.state.order}
           key={`${this.props.state}-${this.props.raceid}`}
         />
-        <div class="embed-text">{getFootnote(state.latest, false, true)}</div>
+        <div class="embed-text">{getFootnote(state.latest, this.props.state, true)}</div>
       </div>
     );
   }
