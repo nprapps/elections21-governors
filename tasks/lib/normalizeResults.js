@@ -125,7 +125,7 @@ var mergeOthers = function (candidates, raceID) {
   
   for (var c of remaining) {
     // preserve candidates with >N% of the vote
-    if (merged.length < 6 || (!total && NEVER_MERGE.has(c.id))) {
+    if (c.votes / total > MERGE_THRESHOLD) {
       merged.push(c);
       continue;
     }
