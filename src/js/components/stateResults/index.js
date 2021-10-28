@@ -102,7 +102,7 @@ export default class StateResults extends Component {
         <div class="results-no-counties">
           <div class="results-wrapper">
             {results.map(race => (
-              <ResultsTableCandidates data={race} class="house-race" />
+              <ResultsTableCandidates data={race} counties={counties} class="house-race" />
             ))}
           </div>
         </div>
@@ -113,7 +113,7 @@ export default class StateResults extends Component {
         <div>
           {results.length > 1 && this.renderJumpButtons(results)}
           {results.map(r =>
-            this.getRaceWithCountyResults(r, results.length - 1)
+            this.getRaceWithCountyResults(r, results.length - 1, counties)
           )}
         </div>
       );
@@ -144,7 +144,7 @@ export default class StateResults extends Component {
     }
   }
 
-  getRaceWithCountyResults(race, oneOfMultiple) {
+  getRaceWithCountyResults(race, oneOfMultiple, counties) {
     var order = race.candidates;
     var isSpecial = !!race.seat;
 
@@ -174,7 +174,7 @@ export default class StateResults extends Component {
     return (
       <div id={`race-${race.id}`} class="race" tabindex="-1">
         {specialHeader}
-        <ResultsTableCandidates data={race} />
+        <ResultsTableCandidates data={race} counties={counties}/>
         {countyResults}
       </div>
     );

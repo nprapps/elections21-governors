@@ -56,7 +56,6 @@ export default class ResultsTableCounty extends Component {
         class={
           "results-counties " + this.state.sortMetric.key.split("_").join("-")
         }>
-        <h3>County Results Table</h3>
         {this.getSorter()}
         <table class={`results-table candidates-${orderedCandidates.length}`}>
           <thead ref={this.tableRef}>

@@ -29,7 +29,6 @@ export default function ResultsTableCandidates(props) {
     Object.keys(activeMugshots).includes(c.last)
   );
 
-  console.log(props)
   var footnote;
   var uncontestedText = isUncontested ? (
     <div class="footnote uncontested">
@@ -52,7 +51,7 @@ export default function ResultsTableCandidates(props) {
         (ballot ? "ballot" : "") +
         (house ? "house" : "")
       }>
-      {seatName && (
+      {seatName && !props.counties && (
         <div class="results-header">
           <caption>
             {" "}
