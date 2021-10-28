@@ -16,7 +16,6 @@
     "src/js/main.js": "build/app.js"
   },
   "scriptsOnce": {
-    "src/js/embed.js": "build/embed.js",
     "src/js/customizer.js": "build/customizer.js",
     "src/js/sidechain.js": "build/sidechain.js"
   },
