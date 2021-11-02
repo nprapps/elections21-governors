@@ -14,7 +14,7 @@ var nprDate = apDate => {
 };
 
 // candidates to always keep in results
-var NEVER_MERGE = new Set(["66651", "69750", "69751", "69755", "69756", "69746", "65863", "65857", "69738"]);
+var NEVER_MERGE = new Set(["66651", "69750", "69751", "69755", "69756", "69746", "65863", "65857", "69738", "69739", "60075"]);
 
 var translation = {
   race: {
