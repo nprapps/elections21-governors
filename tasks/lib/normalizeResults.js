@@ -80,7 +80,18 @@ var sortCandidates = function (votes, candidates) {
     // if any candidate is in the never merge list
     if (votes == 0) {
       if (NEVER_MERGE.has(a.id) && NEVER_MERGE.has(b.id)) {
+        if (
+        (majorParties.has(a.party) && majorParties.has(b.party)) ||
+        a.party == b.party
+      ) {
         return a.last < b.last ? -1 : 1;
+      } else {
+        // one of them is not GOP/Dem
+        if (majorParties.has(a.party)) {
+          return -1;
+        }
+        return 1;
+      }
       } else if (NEVER_MERGE.has(a.id)) {
         return -1;
       } else if (NEVER_MERGE.has(b.id)) {
