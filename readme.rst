@@ -17,7 +17,11 @@ With those installed, you can then set the project up using your terminal:
 #. Pull the code - ``git clone git@github.com:nprapps/elections21-governors``
 #. Enter the project folder - ``cd elections21-governors``
 #. Install dependencies from NPM - ``npm install``
+#. Make sure sheets and docs are up to date - ``grunt sheets docs``
 #. Start the server - ``grunt``
+
+This project is meant to only generate embeds--there is no 'index' page, so localhost:8000/ will be blank. Instead, go to /customizer.html, which shows
+the URLs of the embedded bits. 
 
 Running tasks
 -------------
