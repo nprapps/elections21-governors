@@ -1,5 +1,6 @@
 // require("./lib/pym");
 
+require("./analytics");
 import $ from "./lib/qsa";
 import track from "./lib/tracking";
 import { h, render, Fragment } from "preact";
